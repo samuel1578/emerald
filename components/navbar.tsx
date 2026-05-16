@@ -149,7 +149,7 @@ export function Navbar({ transparentOnTop = true }: { transparentOnTop?: boolean
               isDark ? "bg-[#011A51]" : "bg-background",
             )}
           >
-            <div className="flex h-full flex-col px-6 py-8">
+            <div className="flex h-full min-h-full flex-col overflow-y-auto px-6 py-8">
               <div className="flex items-center justify-between">
                 <div className="origin-left scale-150">
                   <Logo variant={isDark ? "light" : "default"} />
@@ -201,7 +201,7 @@ export function Navbar({ transparentOnTop = true }: { transparentOnTop?: boolean
               </nav>
               <div
                 className={cn(
-                  "mt-auto flex items-center justify-between border-t pt-6",
+                  "mt-auto flex items-center justify-between border-t pt-6 pb-8",
                   isDark ? "border-white/10" : "border-border",
                 )}
               >
