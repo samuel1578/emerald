@@ -71,7 +71,7 @@ export function Scrollytelling() {
           <div>
             <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">The journey</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              Four chapters. <span className="italic text-[#ED7D21]">One unforgettable</span> story.
+              Four chapters. <span className="text-[#ED7D21]">One unforgettable</span> story.
             </h2>
           </div>
           <p className="hidden max-w-xs text-pretty text-sm text-muted-foreground md:block">

@@ -70,9 +70,9 @@ export function ServicesSection() {
       <div className="relative mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.32em] text-[#0FB89C]">Our services</p>
+            <p className="font-raleway text-xs uppercase tracking-[0.32em] text-[#0FB89C]">Our services</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              End-to-end care, from <span className="italic text-[#ED7D21]">first idea</span> to last sunset.
+              End-to-end care, from <span className="text-[#ED7D21]">first idea</span> to last sunset.
             </h2>
           </div>
           <Link

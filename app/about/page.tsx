@@ -1,8 +1,18 @@
+"use client"
+
+import * as React from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { Testimonials } from "@/components/home/testimonials"
 import Image from "next/image"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel"
+import { cn } from "@/lib/utils"
 
 const values = [
   { title: "Slowness", body: "We&apos;d rather you stay one extra night than tick one more box." },
@@ -29,6 +39,27 @@ const team = [
 ]
 
 export default function AboutPage() {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) return
+
+    const intervalId = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext()
+      } else {
+        api.scrollTo(0)
+      }
+    }, 2000)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap())
+    })
+
+    return () => clearInterval(intervalId)
+  }, [api])
+
   return (
     <main>
       <Navbar transparentOnTop />
@@ -36,7 +67,7 @@ export default function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            Travel is a <span className="italic text-[#ED7D21]">love letter</span> to the world.
+            Travel is a <span className="text-[#ED7D21]">love letter</span> to the world.
           </>
         }
         subtitle="Experience the best of Ghana — from the streets of Accra to the shores of Cape Coast. A fully guided cultural journey built for the curious traveller."
@@ -47,8 +78,8 @@ export default function AboutPage() {
       <section className="bg-background py-12 md:py-16">
         <div className="mx-auto grid max-w-7xl gap-16 px-4 md:grid-cols-[1fr_1.2fr] md:px-6">
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">Our story</p>
-            <h2 className="font-display mt-3 max-w-md text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+            <p className="font-raleway text-xs uppercase tracking-[0.32em] text-[#087767]">Our story</p>
+            <h2 className="font-raleway mt-3 max-w-md text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">
               A studio that happens to be a travel agency.
             </h2>
           </div>
@@ -72,11 +103,42 @@ export default function AboutPage() {
       {/* Values */}
       <section className="bg-muted/40 py-12 md:py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-6">
-          <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">What we believe</p>
-          <h2 className="font-display mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+          <p className="font-raleway text-xs uppercase tracking-[0.32em] text-[#087767]">What we believe</p>
+          <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">
             Four ideas that shape every itinerary.
           </h2>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-3xl bg-border md:grid-cols-4">
+
+          {/* Mobile Swiper */}
+          <div className="mt-10 md:hidden">
+            <Carousel setApi={setApi} opts={{ loop: true, align: "start" }} className="w-full">
+              <CarouselContent className="-ml-0">
+                {values.map((v, i) => (
+                  <CarouselItem key={i} className="pl-0 basis-full">
+                    <div className="bg-background p-8 rounded-3xl border border-border h-full">
+                      <span className="font-display text-5xl font-light text-[#087767]/40">0{i + 1}</span>
+                      <h3 className="font-display mt-4 text-2xl font-medium">{v.title}</h3>
+                      <p className="mt-3 text-sm leading-relaxed text-muted-foreground" dangerouslySetInnerHTML={{ __html: v.body }} />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+            {/* Pagination Dots */}
+            <div className="mt-6 flex justify-center gap-2">
+              {values.map((_, i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "h-1.5 rounded-full transition-all duration-300",
+                    current === i ? "w-8 bg-[#ED7D21]" : "w-1.5 bg-border"
+                  )}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Grid */}
+          <div className="mt-10 hidden gap-px overflow-hidden rounded-3xl bg-border md:grid md:grid-cols-4">
             {values.map((v, i) => (
               <div key={v.title} className="bg-background p-8">
                 <span className="font-display text-5xl font-light text-[#087767]/40">0{i + 1}</span>
@@ -91,8 +153,8 @@ export default function AboutPage() {
       {/* Timeline */}
       <section className="bg-background py-12 md:py-16">
         <div className="mx-auto max-w-5xl px-4 md:px-6">
-          <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">The timeline</p>
-          <h2 className="font-display mt-3 text-balance text-4xl font-medium leading-tight tracking-tight md:text-5xl">
+          <p className="font-raleway text-xs uppercase tracking-[0.32em] text-[#087767]">The timeline</p>
+          <h2 className="font-raleway mt-3 text-balance text-4xl font-medium leading-tight tracking-tight md:text-5xl">
             Twelve years of slow building.
           </h2>
           <ol className="mt-14 space-y-12 border-l border-border pl-8 md:pl-12">

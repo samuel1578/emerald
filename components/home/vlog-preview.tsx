@@ -15,7 +15,7 @@ export function VlogPreview() {
           <div>
             <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">From the vlog</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              Watch the world, <span className="italic text-[#ED7D21]">slowly</span>.
+              Watch the world, <span className="text-[#ED7D21]">slowly</span>.
             </h2>
           </div>
           <Link

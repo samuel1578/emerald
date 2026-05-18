@@ -30,7 +30,7 @@ export function Newsletter() {
             <div>
               <p className="font-display text-xs uppercase tracking-[0.32em] text-[#0FB89C]">The dispatch</p>
               <h2 className="font-raleway mt-3 max-w-xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-5xl">
-                Hidden routes, in your inbox. <span className="italic text-[#ED7D21]">Once a month.</span>
+                Hidden routes, in your inbox. <span className="text-[#ED7D21]">Once a month.</span>
               </h2>
               <p className="mt-4 max-w-md text-pretty text-sm leading-relaxed text-white/70">
                 One long-form essay, three quietly extraordinary places, and an early-access link to a new tour. Never

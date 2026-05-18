@@ -44,9 +44,9 @@ export function FeaturedTours() {
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <div className="flex items-end justify-between gap-6">
           <div>
-            <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">Featured tours</p>
+            <p className="font-raleway text-xs uppercase tracking-[0.32em] text-[#087767]">Featured tours</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              Journeys our curators <span className="italic text-[#ED7D21]">are obsessed with</span>.
+              Journeys our curators <span className="text-[#ED7D21]">are obsessed with</span>.
             </h2>
           </div>
           <div className="flex items-center gap-4">
@@ -194,14 +194,14 @@ export function TourCard({ tour }: { tour: (typeof tours)[number] }) {
               <Clock className="h-3 w-3" /> {tour.duration}
             </span>
           </div>
-          <h3 className="font-display text-balance text-2xl font-medium leading-tight">{tour.title}</h3>
+          <h3 className="font-raleway text-balance text-2xl font-medium leading-tight">{tour.title}</h3>
         </div>
       </div>
 
       <div className="flex items-center justify-between px-5 py-4">
         <div>
           <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground">From</p>
-          <p className="font-display text-2xl font-semibold tracking-tight">
+          <p className="font-raleway text-2xl font-semibold tracking-tight">
             ${tour.price.toLocaleString()}
             <span className="ml-1 text-xs font-normal text-muted-foreground">/ person</span>
           </p>

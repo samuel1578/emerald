@@ -45,7 +45,7 @@ export function PopularDestinations() {
           <div>
             <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">Popular destinations</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              Places that <span className="italic text-[#ED7D21]">change you</span>.
+              Places that <span className="text-[#ED7D21]">change you</span>.
             </h2>
           </div>
           <Link

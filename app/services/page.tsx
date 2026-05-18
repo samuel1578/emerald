@@ -40,7 +40,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title={
           <>
-            We design the journey. <span className="italic text-[#ED7D21]">You arrive.</span>
+            We design the journey. <span className="text-[#ED7D21]">You arrive.</span>
           </>
         }
         subtitle="Eight verticals, one philosophy: nothing left to chance, nothing too small to consider."
@@ -60,7 +60,7 @@ export default function ServicesPage() {
                 <span className="grid h-14 w-14 place-items-center rounded-2xl bg-[#087767]/10 text-[#087767]">
                   <s.icon className="h-6 w-6" />
                 </span>
-                <h3 className="font-display mt-6 text-balance text-3xl font-medium leading-tight tracking-tight md:text-5xl">
+                <h3 className="font-raleway mt-6 text-balance text-3xl font-medium leading-tight tracking-tight md:text-5xl">
                   {s.title}
                 </h3>
                 <p className="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">

@@ -57,7 +57,7 @@ function ToursContent() {
         eyebrow="The tours"
         title={
           <>
-            Compose your <span className="italic text-[#ED7D21]">next chapter</span>.
+            Compose your <span className="text-[#ED7D21]">next chapter</span>.
           </>
         }
         subtitle="Filter by mood, destination, or budget. Every tour is privately guided, hand-vetted, and ready to be shaped around you."
@@ -70,7 +70,7 @@ function ToursContent() {
             {/* Sidebar filters */}
             <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
               <div className="rounded-2xl border border-border bg-card p-6">
-                <div className="flex items-center gap-2 text-sm font-semibold">
+                <div className="flex items-center gap-2 font-raleway text-sm font-semibold">
                   <SlidersHorizontal className="h-4 w-4 text-[#087767]" /> Filters
                 </div>
 
@@ -85,7 +85,7 @@ function ToursContent() {
                 </div>
 
                 <div className="mt-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  <p className="font-raleway text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
                     Category
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -94,8 +94,8 @@ function ToursContent() {
                         key={c}
                         onClick={() => setCat(c)}
                         className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${cat === c
-                            ? "border-[#087767] bg-[#087767] text-white"
-                            : "border-border hover:border-[#087767]"
+                          ? "border-[#087767] bg-[#087767] text-white"
+                          : "border-border hover:border-[#087767]"
                           }`}
                       >
                         {c}
@@ -105,7 +105,7 @@ function ToursContent() {
                 </div>
 
                 <div className="mt-6">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  <p className="font-raleway text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
                     Destination
                   </p>
                   <select
@@ -121,10 +121,10 @@ function ToursContent() {
 
                 <div className="mt-6">
                   <div className="flex items-center justify-between">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                    <p className="font-raleway text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
                       Max price
                     </p>
-                    <span className="font-display text-sm font-semibold">${price.toLocaleString()}</span>
+                    <span className="font-raleway text-sm font-semibold">${price.toLocaleString()}</span>
                   </div>
                   <input
                     type="range"
@@ -155,7 +155,7 @@ function ToursContent() {
             <div>
               <div className="mb-6 flex items-end justify-between">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-display text-2xl font-medium text-foreground">{filtered.length}</span> tours
+                  <span className="font-raleway text-2xl font-medium text-foreground">{filtered.length}</span> tours
                   match your taste
                 </p>
                 <select className="rounded-xl border border-border bg-card px-3 py-2 text-sm focus:outline-none">

@@ -57,9 +57,7 @@ export function Hero() {
             className="hero-title max-w-4xl"
           >
             The world,{" "}
-            <span className="italic text-[#ED7D21]">
-              <span className="font-serif">unscripted.</span>
-            </span>
+            <span className="text-[#ED7D21]">unscripted.</span>
             <br />
             Travel, <span className="text-[#0FB89C]">composed.</span>
           </motion.h1>

@@ -18,7 +18,7 @@ export function EventsShowcase() {
           <div>
             <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">Upcoming events</p>
             <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
-              Moments worth <span className="italic text-[#ED7D21]">flying for</span>.
+              Moments worth <span className="text-[#ED7D21]">flying for</span>.
             </h2>
           </div>
           <Link

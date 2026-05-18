@@ -23,7 +23,7 @@ export function PageHeader({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-display text-xs uppercase tracking-[0.32em] text-[#0FB89C]"
+          className="font-raleway text-xs uppercase tracking-[0.32em] text-[#0FB89C]"
         >
           {eyebrow}
         </motion.p>
