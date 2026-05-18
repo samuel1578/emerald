@@ -51,15 +51,15 @@ export function Footer() {
             <div className="mt-8 space-y-3 text-sm text-white/70">
               <div className="flex items-center gap-3">
                 <MapPin className="h-4 w-4 text-[#ED7D21]" />
-                12 Independence Avenue, Airport City, Accra, Ghana
+                Akuafo Hall Annex B, Legon Campus
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-[#ED7D21]" />
-                ghana@emeraldseagle.travel
+                emeraldseagle.ltd@gmail.com
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 text-[#ED7D21]" />
-                +233 24 555 0188
+                0508698826 / 0277117735
               </div>
             </div>
 

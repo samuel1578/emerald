@@ -1,8 +1,14 @@
 import type { Metadata, Viewport } from "next"
-import { Inter, Fraunces, Playfair_Display, Manrope } from "next/font/google"
+import { Raleway, Inter, Fraunces, Playfair_Display, Manrope } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  variable: "--font-raleway",
+  display: "swap",
+})
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,7 +61,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${manrope.variable} ${playfair.variable} ${fraunces.variable} bg-background`}
+      className={`${raleway.variable} ${inter.variable} ${manrope.variable} ${playfair.variable} ${fraunces.variable} bg-background`}
     >
       <body className="font-sans antialiased selection:bg-[#087767] selection:text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>

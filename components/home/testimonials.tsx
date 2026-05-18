@@ -15,7 +15,7 @@ export function Testimonials() {
     <section className="relative bg-background py-12 md:py-16">
       <div className="mx-auto max-w-5xl px-4 text-center md:px-6">
         <p className="font-display text-xs uppercase tracking-[0.32em] text-[#087767]">Travellers</p>
-        <h2 className="font-display mt-3 text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
+        <h2 className="font-raleway mt-3 text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
           Quietly, the kindest <span className="italic text-[#ED7D21]">words</span>.
         </h2>
 

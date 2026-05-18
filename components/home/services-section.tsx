@@ -1,8 +1,15 @@
 "use client"
 
+import * as React from "react"
 import { motion } from "framer-motion"
 import { Compass, Plane, Hotel, Users, Car, MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel"
 
 const services = [
   {
@@ -38,6 +45,22 @@ const services = [
 ]
 
 export function ServicesSection() {
+  const [api, setApi] = React.useState<CarouselApi>()
+
+  React.useEffect(() => {
+    if (!api) return
+
+    const intervalId = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext()
+      } else {
+        api.scrollTo(0)
+      }
+    }, 2000)
+
+    return () => clearInterval(intervalId)
+  }, [api])
+
   return (
     <section className="relative overflow-hidden bg-[#011A51] py-12 text-white md:py-16">
       <div
@@ -48,7 +71,7 @@ export function ServicesSection() {
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="font-display text-xs uppercase tracking-[0.32em] text-[#0FB89C]">Our services</p>
-            <h2 className="font-display mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
+            <h2 className="font-raleway mt-3 max-w-2xl text-balance text-4xl font-medium leading-[1.05] tracking-tight md:text-6xl">
               End-to-end care, from <span className="italic text-[#ED7D21]">first idea</span> to last sunset.
             </h2>
           </div>
@@ -60,7 +83,30 @@ export function ServicesSection() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid-cols-3">
+        {/* Mobile Swiper */}
+        <div className="mt-10 md:hidden">
+          <Carousel setApi={setApi} opts={{ loop: true, align: "start" }} className="w-full">
+            <CarouselContent className="-ml-0">
+              {services.map((s, i) => (
+                <CarouselItem key={i} className="pl-0 basis-full">
+                  <div className="group relative bg-[#011A51] p-8 rounded-3xl border border-white/10 h-full">
+                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-[#087767]/20 text-[#0FB89C] ring-1 ring-[#087767]/40">
+                      <s.icon className="h-6 w-6" />
+                    </span>
+                    <h3 className="font-display mt-6 text-2xl font-medium">{s.title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-white/70">{s.desc}</p>
+                    <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#ED7D21]">
+                      Learn more <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="mt-10 hidden grid-cols-3 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 md:grid">
           {services.map((s, i) => (
             <motion.div
               key={s.title}

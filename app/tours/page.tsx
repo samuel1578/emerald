@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, Suspense } from "react"
+import { useSearchParams } from "next/navigation"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
@@ -12,11 +13,30 @@ import { Search, SlidersHorizontal } from "lucide-react"
 const categories = ["All", "Cultural", "Adventure", "Luxury", "Wellness", "Family"] as const
 const destinations = ["All", ...Array.from(new Set(tours.map((t) => t.location)))]
 
-export default function ToursPage() {
+function ToursContent() {
+  const searchParams = useSearchParams()
   const [cat, setCat] = useState<(typeof categories)[number]>("All")
   const [dest, setDest] = useState("All")
   const [price, setPrice] = useState(7000)
   const [q, setQ] = useState("")
+
+  // Sync with URL params on mount
+  useEffect(() => {
+    const locationParam = searchParams.get("location")
+    if (locationParam && destinations.includes(locationParam)) {
+      setDest(locationParam)
+    }
+
+    const categoryParam = searchParams.get("category")
+    if (categoryParam && (categories as readonly string[]).includes(categoryParam)) {
+      setCat(categoryParam as any)
+    }
+
+    const queryParam = searchParams.get("q")
+    if (queryParam) {
+      setQ(queryParam)
+    }
+  }, [searchParams])
 
   const filtered = useMemo(
     () =>
@@ -25,7 +45,7 @@ export default function ToursPage() {
           (cat === "All" || t.category === cat) &&
           (dest === "All" || t.location === dest) &&
           t.price <= price &&
-          (q === "" || t.title.toLowerCase().includes(q.toLowerCase())),
+          (q === "" || t.title.toLowerCase().includes(q.toLowerCase()) || t.location.toLowerCase().includes(q.toLowerCase())),
       ),
     [cat, dest, price, q],
   )
@@ -73,11 +93,10 @@ export default function ToursPage() {
                       <button
                         key={c}
                         onClick={() => setCat(c)}
-                        className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                          cat === c
+                        className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${cat === c
                             ? "border-[#087767] bg-[#087767] text-white"
                             : "border-border hover:border-[#087767]"
-                        }`}
+                          }`}
                       >
                         {c}
                       </button>
@@ -166,9 +185,8 @@ export default function ToursPage() {
                 {[1, 2, 3, 4].map((p) => (
                   <button
                     key={p}
-                    className={`h-10 w-10 rounded-full text-sm font-semibold ${
-                      p === 1 ? "bg-[#011A51] text-white" : "border border-border hover:bg-muted"
-                    }`}
+                    className={`h-10 w-10 rounded-full text-sm font-semibold ${p === 1 ? "bg-[#011A51] text-white" : "border border-border hover:bg-muted"
+                      }`}
                   >
                     {p}
                   </button>
@@ -184,5 +202,13 @@ export default function ToursPage() {
       </section>
       <Footer />
     </main>
+  )
+}
+
+export default function ToursPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ToursContent />
+    </Suspense>
   )
 }
